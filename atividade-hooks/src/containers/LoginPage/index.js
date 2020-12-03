@@ -1,31 +1,67 @@
-import {useState, useHistory} from 'react';
-import {Link} from 'react-router-dom';
+import {useState} from 'react';
+import {useHistory} from 'react-router-dom';
+import { Alert } from 'react-bootstrap';
 
-import { Row, Col, Form, FormGroup } from 'react-bootstrap';
+import './styles.css';
+
+import { logar } from '../../services/login';
+
+const estado_inicial = {
+    errors: [],
+    carregando : false
+};
 
 const LoginPage = () => {
-    const[email, setEmail] = useState('');
-    const[senha, setSenha] = useState('');
-    const history = useHistory();
+    const redirecionar = useHistory();
 
-    const handleSubmit = (e) => {
-         e.preventDefault();
-         if(!email || !senha) return alert('Preencha todos os campos');
-         history.push("/home")
+    const [state, setState] = useState(estado_inicial);
+    const [formulario, setFormulario]   = useState({
+        email: '',
+        senha: ''
+    });
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+            await logar(formulario.email, formulario.senha);
+            redirecionar.push("/home");
+        } catch (error) {
+            setState({...state, errors: [error]});
+        }
     }
 
     return (
-        <Form className="form-container" onSubmit={handleSubmit}>
-            <div className="form-group">
-                <input id="email" name="email "type="email" className="form-control" placeholder="E-mail"value={email} onChange={({ target: { value }}) => setEmail(value)}/>
+        <section className="form-section">
+            { 
+                state.errors.map((index, error) =>
+                    <Alert key={ index } variant={'error'}>
+                        { error.mensagem }
+                    </Alert>
+                )
+            }
+            <h1>Entre na sua conta</h1>
+
+            <div className="form-wrapper">
+                <form onSubmit={handleSubmit}>
+                <div className="input-block">
+                    <label htmlFor="login-email">Email</label>
+                    <input type="email" name="email" id="login-email" 
+                        onChange={ ({target: { name, value }}) => setFormulario({...formulario, [name]: value })}
+                        required
+                    />
+                </div>
+                <div className="input-block">
+                    <label htmlFor="login-password">Senha</label>
+                    <input type="password" name="senha" id="login-password"
+                       onChange={({target: { name, value }}) => setFormulario({...formulario, [name]: value }) }
+                       required
+                    />
+                </div>
+                <button type="submit" className="btn-login">Login</button>
+                </form>
             </div>
-            
-            <div className="form-group">
-                <input id="password" name="password "type="password" className="form-control" placeholder="Senha" value={pass} onChange={({ target: { value }}) => setPass(value)} />
-            </div>
-            <Link to="/" className="main-btn">Logar</Link>
-        </Form>
+        </section>
 	);
 }
 

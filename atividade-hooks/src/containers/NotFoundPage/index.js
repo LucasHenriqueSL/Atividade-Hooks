@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import Imagem from '../../assets/404.svg';
 import './styles.css';
 
+import { isLogged } from '../../services/login';
+
 function NotFoundPage() {
   return (
       <div className="wrapper">
@@ -11,7 +13,7 @@ function NotFoundPage() {
             <img src={Imagem} alt="not found"/>
           </div>
           <h4>A página que está procurando, não existe!</h4>
-          <Link to="/" className="main-btn">Voltar</Link>
+          {isLogged ? <Link to="/home" className="main-btn">Voltar</Link> : <Link to="/" className="main-btn">Voltar</Link>}
       </div>
   );
 }

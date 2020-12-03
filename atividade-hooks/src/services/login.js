@@ -18,9 +18,9 @@ export const getUser = async () => {
 
 export const logar = async (user, pass) => {
     const { data } = await api.post(AUTH_LOGIN, { email: user, senha: pass });
-    if (token) {
-        salvarToken(data);
-        return true;
+    if(data.token) {
+        salvarToken(data.token);
+        return true;    
     }
     return false;
 }
