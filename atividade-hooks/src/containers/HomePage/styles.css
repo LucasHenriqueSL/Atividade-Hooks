@@ -37,13 +37,13 @@
     padding: 10px;
     border-radius: 4px;
     outline: none;
-    background: #dd544a;
+    background: #f78acd;
     margin-left: 16px;
     transition: 0.2s;
 }
 
 .container header button:hover{
-    background: #d84e44;
+    background: #e970ba;
 }
 
 .container div.content {
