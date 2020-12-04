@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
-const errorHandler = require('./helpers/handler.error');
-const UsuarioRoutes = require('./controllers/usuarios.routes');
+const UsuarioRoutes = require('./controllers/usuarios/usuarios.routes');
+const VerdurasRoutes = require('./controllers/verduras/verduras.routes');
 
 const server = express();
 
@@ -9,6 +9,7 @@ server.use(cors());
 server.use(express.json());
 
 server.use(UsuarioRoutes);
+server.use(VerdurasRoutes);
 
 server.use((req, res, next) => {
     const error = new Error("página não encontrada");

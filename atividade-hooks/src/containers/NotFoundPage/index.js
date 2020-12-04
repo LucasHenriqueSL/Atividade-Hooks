@@ -13,7 +13,7 @@ function NotFoundPage() {
             <img src={Imagem} alt="not found"/>
           </div>
           <h4>A página que está procurando, não existe!</h4>
-          {isLogged ? <Link to="/home" className="main-btn">Voltar</Link> : <Link to="/" className="main-btn">Voltar</Link>}
+          {isLogged() ? <Link to="/home" className="main-btn">Voltar</Link> : <Link to="/" className="main-btn">Voltar</Link>}
       </div>
   );
 }

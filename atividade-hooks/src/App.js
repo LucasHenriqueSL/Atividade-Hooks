@@ -12,9 +12,11 @@ import { isLogged } from './services/login';
 
 import NotFoundPage from './containers/NotFoundPage'; 
 import LoginPage from './containers/LoginPage'; 
+import HomePage from './containers/HomePage'; 
+import ItemPage from './containers/ItemPage';
 
 const RotaPrivada = (props) => {
-  return isLogged ? <Route {...props} /> : <Redirect to="/"/>
+  return isLogged() ? <Route {...props} /> : <Redirect to="/"/>
 }
 
 function App() {
@@ -22,8 +24,8 @@ function App() {
     <BrowserRouter>
       <Switch>
         <Route path="/" exact component={LoginPage}/>
-        {/* <RotaPrivada path="/home"/>
-        <RotaPrivada path="/home/item/:id"/> */}
+        <RotaPrivada path="/home" component={HomePage}/>
+        {/* <RotaPrivada path="/home/item" component={ItemPage}/> */}
         <Route path="*" component={NotFoundPage}/>
       </Switch>
     </BrowserRouter>

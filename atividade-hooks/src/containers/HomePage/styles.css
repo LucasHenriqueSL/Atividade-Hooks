@@ -1,0 +1,95 @@
+/*
+    HA - Header Area
+    CA - Content Area
+*/
+
+.container{
+    width: 100%;
+    height: 100%;
+
+    max-width: 1180px;
+
+    display: grid;
+
+    grid-template-rows: 20vh auto;
+
+    grid-template-areas: 
+    'HA'
+    'CA';
+}
+
+.container header{
+    grid-area: HA;
+
+    padding: 10px 0;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container header span {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.container header button{
+    padding: 10px;
+    border-radius: 4px;
+    outline: none;
+    background: #dd544a;
+    margin-left: 16px;
+    transition: 0.2s;
+}
+
+.container header button:hover{
+    background: #d84e44;
+}
+
+.container div.content {
+    grid-area: CA;
+}
+
+.container div.content h1{
+    margin: 0;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.container div.content ul{
+    margin-top: 5rem;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 24px;
+    list-style: none;
+}
+
+.container div.content ul li{
+    background: #fff;
+    padding: 24px;
+    border-radius: 8px;
+    position: relative;
+}
+
+.container div.content ul li .btnLink {
+    display: block;
+    margin: auto;
+    padding: 15px 40px;
+    max-width: 140px;
+    background: #88efc8;
+    color: #2F2E41;
+    font-weight: 700;
+    letter-spacing: 1px;
+    border-radius: 6px;
+    outline: none;
+    text-decoration: none;
+    text-align: center;
+}
+
+.container div.content ul li .btnLink .arrowRight {
+    transition: .2s;
+}
+
+.container div.content ul li .btnLink:hover .arrowRight {
+    transform: translateX(15%);
+}

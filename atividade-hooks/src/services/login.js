@@ -17,12 +17,17 @@ export const getUser = async () => {
 }
 
 export const logar = async (user, pass) => {
-    const { data } = await api.post(AUTH_LOGIN, { email: user, senha: pass });
-    if(data.token) {
-        salvarToken(data.token);
-        return true;    
+    try {
+        const { data } = await api.post(AUTH_LOGIN, { email: user, senha: pass });
+        if(data.token) {
+            salvarToken(data.token);
+            return true;    
+        }
+        
+    } catch (error) {
+        return false;
+        
     }
-    return false;
 }
 
 

@@ -1,21 +1,17 @@
 import {useState} from 'react';
 import {useHistory} from 'react-router-dom';
-import { Alert } from 'react-bootstrap';
+
+import { ToastContainer, toast, Zoom, Bounce } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import './styles.css';
 
 import { logar } from '../../services/login';
 
-const estado_inicial = {
-    errors: [],
-    carregando : false
-};
-
 const LoginPage = () => {
     const redirecionar = useHistory();
 
-    const [state, setState] = useState(estado_inicial);
-    const [formulario, setFormulario]   = useState({
+    const [formulario, setFormulario] = useState({
         email: '',
         senha: ''
     });
@@ -23,25 +19,20 @@ const LoginPage = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        try {
-            await logar(formulario.email, formulario.senha);
+        const userLogado = await logar(formulario.email, formulario.senha);
+        if (userLogado){
             redirecionar.push("/home");
-        } catch (error) {
-            setState({...state, errors: [error]});
+        } else { 
+            toast.error("Usuário ou senha incorretos", {
+                position: toast.POSITION.TOP_CENTER
+            });
         }
     }
-
+    
     return (
         <section className="form-section">
-            { 
-                state.errors.map((index, error) =>
-                    <Alert key={ index } variant={'error'}>
-                        { error.mensagem }
-                    </Alert>
-                )
-            }
+            <ToastContainer draggable={false} transition={Bounce} autoClose={5000}/>
             <h1>Entre na sua conta</h1>
-
             <div className="form-wrapper">
                 <form onSubmit={handleSubmit}>
                 <div className="input-block">

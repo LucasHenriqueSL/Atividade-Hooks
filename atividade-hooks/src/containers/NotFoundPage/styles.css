@@ -1,5 +1,5 @@
 body {
-    background-color: #88efc8;
+    background-color: #6c63ff;
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -8,11 +8,17 @@ body {
 
 .wrapper {
     text-align: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .wrapper h2 {
     margin: 40px 0;
     font-size: 2.5rem;
+    color: #fff;
 }
 
 .wrapper img {
@@ -23,12 +29,14 @@ body {
 .wrapper h4 {
     margin: 40px 20px;
     font-size: 1.2rem;
+    color: #fff;
 }
 
 .wrapper .main-btn{
     padding: 15px 40px;
-    background: #6c63ff;
-    color: #fff;
+    max-width: 140px;
+    background: #88efc8;
+    color: #2F2E41;
     font-weight: 700;
     letter-spacing: 1px;
     border-radius: 6px;

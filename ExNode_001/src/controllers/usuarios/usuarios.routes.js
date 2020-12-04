@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const usuarioController = require('./usuarios.controller');
-const auth = require('../helpers/middleware/auth.middleware');
+const auth = require('../../helpers/middleware/auth.middleware');
 
 const BASE_PATH = '/auth';
 
