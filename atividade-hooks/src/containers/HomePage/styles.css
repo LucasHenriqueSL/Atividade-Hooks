@@ -31,6 +31,7 @@
 .container header span {
     font-size: 20px;
     font-weight: 700;
+    color: #2F2E41;
 }
 
 .container header button{
@@ -40,6 +41,8 @@
     background: #f78acd;
     margin-left: 16px;
     transition: 0.2s;
+    color: #2F2E41;
+    font-weight: 600;
 }
 
 .container header button:hover{

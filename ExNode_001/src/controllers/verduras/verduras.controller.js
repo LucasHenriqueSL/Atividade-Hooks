@@ -1,28 +1,33 @@
+const verduras = [
+    {id:1, nome: "alface", preco: "2.32", qntd: "unidade", desc: "Alface (Lactuca sativa) é uma hortense anual ou bienal, utilizada na alimentação humana desde cerca de 500 a.C.. Originária do Leste do Mediterrâneo, é mundialmente cultivada para o consumo em saladas, com inúmeras variedades de folhas, cores, formas, tamanhos e texturas."},
+    {id:2, nome: "cebolinha", preco: "1.20", qntd: "400g", desc: "Allium schoenoprasum é uma planta vivaz, que se desenvolve em tufos muito densos. Apresenta folhas verde-escuras, roliças, que atingem no máximo 10 cm de altura. Em junho, cobrem-se de flores rosa-pálido, semelhantes a pompons. Tais flores devem ser imediatamente retiradas para que as novas folhas possam rebentar. As folhas frescas têm um agradável e suave sabor parecido com o da cebola, sendo especialmente utilizadas cruas em saladas, em pastas de queijo fresco e também em pratos de ovos e queijo."},
+    {id:3, nome: "couve", preco: "4.50", qntd: "1kg", desc: "couve é um vegetal crucífero do gênero Brassica e pertencente à família Brassicaceae, da qual fazem parte mais de 3.000 espécies, entre elas o repolho, a mostarda, o rabanete e o nabo. Nativa da Europa e introduzida no Brasil pelos primeiros colonizadores portugueses, a couve se tornou uma das hortaliças mais consumidas e apreciadas em nosso país."},
+    {id:4, nome: "Salsa", preco: "0.75", qntd: "1kg", desc: "A salsa, também chamada de salsinha, é um alimento ótimo para dar sabor a pratos sem acrescentar quantidades excessivas de sal ou açúcar. Além de ajudar na redução do consumo de temperos refinados, o consumo de salsa proporciona benefícios à saúde"},
+    {id:5, nome: "Escarola", preco: "40.90", qntd: "unidade", desc: "A escarola é uma folha verde escura, da mesma família que a chicória, cheia de fibras e muito popular na comida brasileira. É uma das mais nutritivas folhas verdes, bem como é conhecida por seu sabor amargo"},
+    {id:6, nome: "hortelã", preco: "5.21", qntd: "900g", desc: "A hortelã é uma erva aromática que pode ser usada na culinária e para fins medicinais porque possui ação analgésica, antiespasmódica e afrodisíaca, sendo um ótimo chá para tomar após as refeições, já que ajuda na digestão. A hortelã também tem ação anti-parasitária podendo ajudar a aliviar os sintomas e combater a infecção por parasitas, como amebíase e giardíase, por exemplo."},
+    {id:7, nome: "repolho", preco: "2.36", qntd: "unidade", desc: "O repolho é um vegetal que pode ser consumido cru ou cozido, por exemplo, podendo ser um acompanhamento das refeições ou o ingrediente principal."},
+    {id:8, nome: "alho-poró", preco: "2.00", qntd: "300g", desc: "O alho-porro (português europeu) ou alho-poró (português brasileiro) (Allium porrum ou, segundo J. Gay Allium ampeloprasum var. porrum) é um vegetal que pertence à mesma família (Amaryllidaceae)[1][2] que as cebolas e os alhos. Existem ainda as variantes Allium ampeloprasum var. ampeloprasum, cultivado devido ao uso dos seus bolbos e o Allium kurrat cujas folhas são apreciadas no Egipto e Médio Oriente. É ainda conhecido pelos termos alho-francês, alho-macho, alho-poró, alho-porró, alho-porrô, poró, porro, porró, porrô, porro-bravo e porro-hortense."},
+    {id:9, nome: "coentro", preco: "1.00", qntd: "200g", desc: "Folhas e sementes de coentro têm sabores, aromas e benefícios distintos. O coentro é uma planta pertencente à família Apiaceae, de nome científico Coriandrum sativum."},
+    {id:10, nome: "rúcula", preco: "4.21", qntd: "unidade", desc: "A rúcula (Eruca sativa), também chamada de mostarda-persa, é uma hortaliça originária de regiões próximas ao Mediterrâneo. A mesma era muito utilizada no Império Romano como afrodisíaco. Atualmente, a rúcula é muito popular na Itália, sendo empregada em vários pratos típicos italianos. Já no Brasil, é mais consumida nos estados da região Sul."},
+    {id:11, nome: "almeirão", preco: "7.53", qntd: "unidade", desc: "O almeirão, pertencente ao gênero Cichorium, e também conhecido como chicória amarga, é uma planta herbácea perene, nativa da Europa, muito apreciada e cultivada em vários países. Membro da família Asteraceae, da qual fazem parte também às alfaces e as serralhas, o almeirão é uma hortaliça muito nutritiva."},
+    {id:12, nome: "catalonha", preco: "3.00", qntd: "800g", desc: "Catalonha é uma hortaliça que tem efeito detox. O nome científico da catalonha é Chicorium intybus. De fato, muitos acreditam que ela não passa de uma variação da chicória e escarola."},
+    {id:13, nome: "nabo", preco: "4.97", qntd: "unidade", desc: "O nabo (Brassica rapa L.) é uma planta crucífera (da família das couves) de raiz tuberosa e folhas comestíveis. No Brasil o nome nabo refere-se popularmente a uma variedade branca de rabanete (Raphanus sativus L.). À planta em flor comercializada é dado o nome de grelos-de-nabo ou simplesmente grelos e à rama sem flor chama-se nabiça. É utilizado como guarnição ou própria matéria-prima para alguns pratos. É uma planta rica em cálcio e possui poucas calorias."},
+    {id:14, nome: "louro", preco: "6.59", qntd: "100g", desc: "A planta é a fonte de várias ervas populares e uma especiaria usada em uma grande variedade de receitas, particularmente entre as cozinhas mediterrâneas. Mais comumente, as folhas aromáticas são adicionadas inteiras aos molhos de massas italianas. Eles são tipicamente removidos dos pratos antes de serem servidos, a menos que sejam usados ​​como um simples enfeite."},
+    {id:15, nome: "erva-doce", preco: "2.90", qntd: "100g", desc: "Uma fruta, em forma de semente, é usada em confeitaria e em licor (como anisete, zammù, uzo). A fruta consiste em dois pistilos unidos e tem um sabor aromático forte e um odor poderoso. A semente de anis também é usada em alguns caris e pratos com frutos do mar, contra mau hálito e como ajudante digestivo. Todas as partes que ficam acima do solo de uma planta jovem de anis também são comidas como vegetais."},
+    {id:16, nome: "agrião", preco: "0.45", qntd: "350g", desc: "O agrião é um vegetal cujo nome científico é Nasturtium Officinale. Sua folha é pequena, verde-escura, rica em nutrientes e tem um sabor levemente picante."},
+    {id:17, nome: "brócolis", preco: "0.70", qntd: "unidade", desc: "Os brócolis pertencem à família dos crucíferos, juntamente com a couve-flor, o repolho, o agrião e a couve. O alimento é bastante nutritivo, sendo uma boa fonte de fibras e proteínas, além de ter ferro, potássio, cálcio e magnésio. E também possui vitaminas A, C, E e K"},
+    {id:18, nome: "chicória", preco: "80.90", qntd: "890g", desc: "A chicória, cujo nome científico é Cichorium pumilum, é uma planta rica em vitaminas, minerais e fibras e pode ser consumida crua, em saladas frescas, ou na forma de chás, sendo as partes mais usadas suas folhas e raízes."},
+    {id:19, nome: "mostarda", preco: "10.00", qntd: "800g", desc: "As mostardas são plantas dos géneros Brassica e Sinapis cujas sementes são utilizadas como especiaria e que, após moídas e misturadas com água, vinagre e outros líquidos, se transformam no condimento conhecido como mostarda. As sementes de mostarda podem também ser usadas para obtenção de óleo de mostarda, e as folhas são geralmente comestíveis. Além das mostardas, o género Brassica também inclui couves, colza e nabos."},
+    {id:20, nome: "espinafre", preco: "0.10", qntd: "unidade", desc: "O espinafre é uma verdura com uma alta carga nutritiva, pois traz em seu interior substâncias como Ferro, Cálcio, Fósforo e vitaminas A e B."}
+]
 module.exports = {
     pegar (req, res) {
-        const verduras = [
-            {id:1, nome: "alface", preco: "2.32", qntd: "unidade"},
-            {id:2, nome: "cebolinha", preco: "1.20", qntd: "400g"},
-            {id:3, nome: "couve", preco: "4.50", qntd: "1kg"},
-            {id:4, nome: "Salsa", preco: "0.75", qntd: "1kg"},
-            {id:5, nome: "Escarola", preco: "40.90", qntd: "unidade"},
-            {id:6, nome: "hortelã", preco: "5.21", qntd: "900g"},
-            {id:7, nome: "repolho", preco: "2.36", qntd: "unidade"},
-            {id:8, nome: "alho-poró", preco: "2.00", qntd: "300g"},
-            {id:9, nome: "coentro", preco: "1.00", qntd: "200g"},
-            {id:10, nome: "rúcula", preco: "4.21", qntd: "unidade"},
-            {id:11, nome: "almeirão", preco: "7.53", qntd: "unidade"},
-            {id:12, nome: "catalonha", preco: "3.00", qntd: "800g"},
-            {id:13, nome: "nabo", preco: "4.97", qntd: "unidade"},
-            {id:14, nome: "louro", preco: "6.59", qntd: "100g"},
-            {id:15, nome: "erva-doce", preco: "2.90", qntd: "100g"},
-            {id:16, nome: "agrião", preco: "0.45", qntd: "350g"},
-            {id:17, nome: "brócolis", preco: "0.70", qntd: "unidade"},
-            {id:18, nome: "chicória", preco: "80.90", qntd: "890g"},
-            {id:19, nome: "mostarda", preco: "10.00", qntd: "800g"},
-            {id:20, nome: "espinafre", preco: "0.10", qntd: "unidade"}
-        ]
+        res.status(200).json(verduras);
+    },
 
-        res.status(201).json(verduras);
+    pegarUma (req, res) {
+        const { id } = req.params;
+        const verdura = verduras.find(verdura => id == verdura.id);
+        res.status(200).json(verdura);
     }
 }

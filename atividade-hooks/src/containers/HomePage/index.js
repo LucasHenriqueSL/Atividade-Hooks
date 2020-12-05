@@ -31,7 +31,7 @@ const Home = () => {
         </button>
       </header>
       <div className="content">
-        <h1>Lista de frutas disponíveis</h1>
+        <h1>Lista de verduras disponíveis</h1>
         <ul>
           {verduras.map(verdura => (
             <li key={verdura.id}>
@@ -41,7 +41,7 @@ const Home = () => {
               <strong>VALOR:</strong>
               <p>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL'}).format(Number(verdura.preco))}</p>
 
-              <Link to="/home/item" className="btnLink">Ver <FiArrowRight className="arrowRight" size={24} color="#2F2E41"/></Link>
+              <Link to={`/item/${verdura.id}`} className="btnLink">Ver <FiArrowRight className="arrowRight" size={24} color="#2F2E41"/></Link>
             </li>
           ))}
         </ul>

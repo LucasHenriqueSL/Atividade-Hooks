@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import {useHistory} from 'react-router-dom';
 
-import { ToastContainer, toast, Zoom, Bounce } from 'react-toastify';
+import { ToastContainer, toast, Bounce } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import './styles.css';
@@ -31,7 +31,7 @@ const LoginPage = () => {
     
     return (
         <section className="form-section">
-            <ToastContainer draggable={false} transition={Bounce} autoClose={5000}/>
+            <ToastContainer draggable={false} transition={Bounce} autoClose={3000}/>
             <h1>Entre na sua conta</h1>
             <div className="form-wrapper">
                 <form onSubmit={handleSubmit}>

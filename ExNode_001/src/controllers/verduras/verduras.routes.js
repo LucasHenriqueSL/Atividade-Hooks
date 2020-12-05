@@ -6,3 +6,4 @@ const BASE_PATH = '/verduras';
 
 module.exports = router
     .get(`${BASE_PATH}`, auth, verduraController.pegar)
+    .get(`${BASE_PATH}/:id`, auth, verduraController.pegarUma)

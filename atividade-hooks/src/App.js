@@ -25,7 +25,7 @@ function App() {
       <Switch>
         <Route path="/" exact component={LoginPage}/>
         <RotaPrivada path="/home" component={HomePage}/>
-        {/* <RotaPrivada path="/home/item" component={ItemPage}/> */}
+        <RotaPrivada path="/item/:id" component={ItemPage}/>
         <Route path="*" component={NotFoundPage}/>
       </Switch>
     </BrowserRouter>
